@@ -2,10 +2,9 @@ const { width, height } = TheSkydims.get('window');
 import { dranesofnts } from '../dranesofnts';
 import { Dimensions as TheSkydims, TouchableOpacity as UndtecTopablacity, ImageBackground as ButtnMaterial, GestureResponderEvent as GestureRespEvnt, Text as Label, } from 'react-native';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
+import ThreGoldGradint from './ThreGoldGradint';
 
 interface DoubleBordersBuntnProps {
-    buttype?: 'square' | 'round-square' | 'pirp-square';
     stirifonRozm?: number;
     opacity?: number; // додано
     morStilOfWrapBtn?: object;
@@ -14,6 +13,7 @@ interface DoubleBordersBuntnProps {
     children?: React.ReactNode; // додано
     buttonText: string;
     isScoundrel?: boolean; // додано
+    drugeiColors?: string[] | undefined; // додано
 }
 
 const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
@@ -22,10 +22,10 @@ const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
     buttonText,
     stirifonRozm = width * 0.053,
     morStilOfWrapBtn,
-    buttype = 'square',
     onPress,
     opacity = 1, // додано
     isScoundrel = false, // додано
+    drugeiColors = ['#D79C34', '#F9F694', '#BA8320'], // додано
 }) => {
 
     return (
@@ -40,16 +40,7 @@ const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
             borderColor: '#FFD076',
         }, morStilOfWrapBtn]} disabled={disabled}>
             {!isScoundrel && (
-                <LinearGradient
-                    colors={['#D79C34', '#F9F694', '#BA8320']}
-                    start={{ x: 0, y: 0.5 }}
-                    end={{ x: 1, y: 0.5 }}
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                    }}
-                />
+                <ThreGoldGradint drugeiColors={drugeiColors ? drugeiColors : undefined}/>
             )}
             {children ? children : (
                 <Label style={[{

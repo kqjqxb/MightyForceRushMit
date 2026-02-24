@@ -24,15 +24,10 @@ import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
 import { Text } from 'react-native-gesture-handler';
 import { dranesofnts } from '../dranesofnts';
 import TyhAchievmentsMur from './TyhAchievmentsMur';
+import StatisticsRuforMygh from './StatisticsRuforMygh';
+import ForshLevels from './ForshLevels';
 
 const { width: fitukwot, height: tiroh } = Lofismn.get('window');
-
-const plopBgs = [
-    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png'),
-    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/grelitn.png'),
-    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/pirilst.png'),
-    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/relid.png'),
-];
 
 const QlopObgrZoq: React.FC = () => {
     const [tabZoq, setTabZoq] = furtStatilo<Cagesbe>('Poeck Jacn Ateians Start Application');
@@ -62,6 +57,10 @@ const QlopObgrZoq: React.FC = () => {
                 return <ZoqQwexComp setActiveTab={setTabZoq} />;
             case 'My achievements':
                 return <TyhAchievmentsMur />;
+            case 'Statistics':
+                return <StatisticsRuforMygh />;
+            case 'Start level':
+                return <ForshLevels />
             default:
                 return null;
         }
@@ -82,7 +81,7 @@ const QlopObgrZoq: React.FC = () => {
                 height: tiroh * 1.04,
                 top: -tiroh * 0.02,
             }}
-                source={plopBgs[curBgZoq]}
+                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png')}
             />
             {/* <Julnivew style={{ paddingTop: tiroh * 0.023 }} /> */}
             {tabZoq !== 'Poeck Jacn Ateians Start Application' && (
@@ -94,23 +93,6 @@ const QlopObgrZoq: React.FC = () => {
             <Julnivew style={{ flex: 1, zIndex: 1 }}>
                 {renderTabScene(tabZoq)}
             </Julnivew>
-            {tabZoq !== 'Poeck Jacn Ateians Start Application' && (
-                <CikrLogiColifBut
-                    onPress={() => setTabZoq('Poeck Jacn Ateians Start Application')}
-                    buttype='round-square'
-                    buttonText={'Menu'}
-                    stirifonRozm={fitukwot * 0.05}
-                    morStilOfWrapBtn={{
-                        opacity: 1,
-                        height: tiroh * 0.07,
-                        position: 'absolute',
-                        zIndex: 10,
-                        alignSelf: 'center',
-                        bottom: tiroh * 0.01,
-                        width: fitukwot * 0.4,
-                    }}
-                />
-            )}
         </Julnivew>
     );
 };
