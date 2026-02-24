@@ -14,7 +14,7 @@ export default function StatisticsRuforMygh({ setActiveTab: ylopSetTab }: { setA
     const { width: forwids, height: oruh } = Dimensions.get('window');
 
     // Стейт для статистики
-    const [levelsPassed, setLevelsPassed] = useState<number>(0);
+    const [levelsPassed, setLevelsPassed] = useState<number[]>([]);
 
     // Мокові дані для інших полів (замінити на свої при інтеграції)
     const bestScore = 250;
@@ -28,11 +28,19 @@ export default function StatisticsRuforMygh({ setActiveTab: ylopSetTab }: { setA
             try {
                 const levels = await AsyncStorage.getItem('mightyForMitLevels');
                 if (levels) {
-                    setLevelsPassed(Number(levels));
+                    const parsed = JSON.parse(levels);
+                    if (Array.isArray(parsed)) {
+                        setLevelsPassed(parsed);
+                    } else {
+                        setLevelsPassed([]);
+                    }
+                } else {
+                    setLevelsPassed([]);
                 }
             } catch (e) {
-                setLevelsPassed(0);
+                setLevelsPassed([]);
             }
+            console.log('Fetched levels passed:', levelsPassed);
         };
         fetchLevels();
     }, []);
@@ -80,15 +88,7 @@ export default function StatisticsRuforMygh({ setActiveTab: ylopSetTab }: { setA
                     color: '#C6C7E9',
                     marginBottom: oruh * 0.012,
                 }}>
-                    Best score: {bestScore}
-                </Text>
-                <Text style={{
-                    fontFamily: dranesofnts.foriLexenLit,
-                    fontSize: forwids * 0.052,
-                    color: '#C6C7E9',
-                    marginBottom: oruh * 0.012,
-                }}>
-                    Level passed: {levelsPassed}
+                    Level passed: {levelsPassed.length}
                 </Text>
                 <Text style={{
                     fontFamily: dranesofnts.foriLexenLit,
@@ -102,14 +102,6 @@ export default function StatisticsRuforMygh({ setActiveTab: ylopSetTab }: { setA
                     fontFamily: dranesofnts.foriLexenLit,
                     fontSize: forwids * 0.052,
                     color: '#C6C7E9',
-                    marginBottom: oruh * 0.012,
-                }}>
-                    Best time: {bestTime.toFixed(2)}s
-                </Text>
-                <Text style={{
-                    fontFamily: dranesofnts.foriLexenLit,
-                    fontSize: forwids * 0.052,
-                    color: '#C6C7E9',
                     marginBottom: oruh * 0.018,
                 }}>
                     Mighty Rush passed: {mightyRushPassed ? 'Yes' : 'No'}
@@ -117,7 +109,7 @@ export default function StatisticsRuforMygh({ setActiveTab: ylopSetTab }: { setA
                 <CikrLogiColifBut
                     onPress={() => {
                         Share.share({
-                            message: `My Mighty Force Rush stats:\nBest score: ${bestScore}\nLevels passed: ${levelsPassed}\nMedals received: ${medalsReceived}\nBest time: ${bestTime.toFixed(2)}s\nMighty Rush passed: ${mightyRushPassed ? 'Yes' : 'No'}`,
+                            message: `My Mighty Force Rush stats:\nLevels passed: ${levelsPassed}\nMedals received: ${medalsReceived}\nMighty Rush passed: ${mightyRushPassed ? 'Yes' : 'No'}`,
                         })
                     }}
                     buttonText={'Share'}

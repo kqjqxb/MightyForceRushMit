@@ -60,6 +60,7 @@ const QlopObgrZoq: React.FC = () => {
             case 'Statistics':
                 return <StatisticsRuforMygh />;
             case 'Start level':
+            case 'Mighty Rush':
                 return <ForshLevels />
             default:
                 return null;
