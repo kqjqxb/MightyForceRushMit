@@ -1,9 +1,9 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ThreGoldGradint = () => (
+const ThreGoldGradint = ({drugeiColors} : {drugeiColors?: string[]}) => (
     <LinearGradient
-        colors={['#D79C34', '#F9F694', '#BA8320']}
+        colors={drugeiColors || ['#D79C34', '#F9F694', '#BA8320']}
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
         style={{
