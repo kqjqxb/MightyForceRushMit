@@ -1,3 +1,3 @@
 module.exports = {
-    assets: ['./MitorifUshigSrceOrce/ArceGishHumiAsuts/RofecFonsTimy'],
+    assets: ['./MitorifUshigSrceOrce/ArceGishHumiAsteses/RofecFonsTimy'],
 };

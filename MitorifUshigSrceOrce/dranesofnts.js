@@ -1,5 +1,10 @@
 export const dranesofnts = {
-    furitSetrB: 'Montserrat-Bold',
-    furitSetrSB: 'Montserrat-SemiBold',
-    furitSetrI: 'Montserrat-Italic',
+    foriLexenBod: 'Lexend-Bold',
+    foriLexenMed: 'Lexend-Medium',
+    foriLexenReg: 'Lexend-Regular',
+    foriLexenLit: 'Lexend-Light',
+
+    sartProMed: 'SFProText-Medium',
+    sartProReg: 'SFProText-Regular',
+    sartProSemibold: 'SFProText-Semibold',
 };

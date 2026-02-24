@@ -56,10 +56,10 @@ const XyntrickLoadiRuloln = (): React.ReactElement => {
             alignItems: 'center',
         }}>
             <JiklopImg resizeMode="cover" style={{  zIndex: 0,height: logih * 1.2,width: coliw,}}
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/lights.png')}
+                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png')}
             />
 
-            <JiklopImg style={{
+            {/* <JiklopImg style={{
                 zIndex: 0, width: coliw * 0.8, alignSelf: 'center',
                 top: logih * 0.1,
                 position: 'absolute',
@@ -67,7 +67,7 @@ const XyntrickLoadiRuloln = (): React.ReactElement => {
                 }}
                 resizeMode="contain"
                 source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/elementsformain.png')}
-            />
+            /> */}
 
             <QytrSafe style={{
                 bottom: logih * 0.1,

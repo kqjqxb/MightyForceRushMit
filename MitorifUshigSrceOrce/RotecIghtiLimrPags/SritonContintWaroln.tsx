@@ -3,6 +3,7 @@ import {
     View as Julnivew,
     SafeAreaView as Stafe,
     Image as Zobroln,
+    TouchableOpacity,
 } from 'react-native';
 import React, {
     useState as furtStatilo,
@@ -16,14 +17,18 @@ type Cagesbe =
     | 'Points Exchange';
 
 import ZoqQwexComp from './PoetJaekHomeTians';
+import TopBarView from './TopBarView';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import { Text } from 'react-native-gesture-handler';
+import { dranesofnts } from '../dranesofnts';
+import TyhAchievmentsMur from './TyhAchievmentsMur';
 
 const { width: fitukwot, height: tiroh } = Lofismn.get('window');
 
 const plopBgs = [
-    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/lights.png'),
+    require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png'),
     require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/grelitn.png'),
     require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/pirilst.png'),
     require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/litsinfonts/relid.png'),
@@ -32,22 +37,6 @@ const plopBgs = [
 const QlopObgrZoq: React.FC = () => {
     const [tabZoq, setTabZoq] = furtStatilo<Cagesbe>('Poeck Jacn Ateians Start Application');
     const [curBgZoq, setCurBgZoq] = furtStatilo<number>(0);
-
-    // --- music state and effect (unique keys/vars) ---
-    const [isZoqMusOn, setIsZoqMusOn] = furtStatilo<boolean>(false);
-    const [zoqMusPlayer, setZoqMusPlayer] = furtStatilo<any | null>(null);
-
-    // load music setting from AsyncStorage (unique key)
-    furtrikEfechn(() => {
-        AsyncStorage.getItem('plopGateMusicOn').then((val) => {
-            if (val === null) {
-                AsyncStorage.setItem('plopGateMusicOn', 'true');
-                setIsZoqMusOn(true);
-            } else {
-                setIsZoqMusOn(val === 'true');
-            }
-        });
-    }, []);
 
     // Load active background from AsyncStorage
     furtrikEfechn(() => {
@@ -67,22 +56,12 @@ const QlopObgrZoq: React.FC = () => {
         return () => { isZoqActive = false; };
     }, []);
 
-    // Setter to update both state and AsyncStorage
-    const handleSetCurBgZoq = async (idx: number) => {
-        setCurBgZoq(idx);
-        await AsyncStorage.setItem('plopGateActiveBg', String(idx));
-    };
-
-    // Setter for music toggle, persists to AsyncStorage
-    const handleSetZoqMusOn = async (on: boolean) => {
-        setIsZoqMusOn(on);
-        await AsyncStorage.setItem('plopGateMusicOn', on ? 'true' : 'false');
-    };
-
     const renderTabScene = (tab: Cagesbe) => {
         switch (tab) {
             case 'Poeck Jacn Ateians Start Application':
                 return <ZoqQwexComp setActiveTab={setTabZoq} />;
+            case 'My achievements':
+                return <TyhAchievmentsMur />;
             default:
                 return null;
         }
@@ -105,12 +84,16 @@ const QlopObgrZoq: React.FC = () => {
             }}
                 source={plopBgs[curBgZoq]}
             />
-            <Julnivew style={{ paddingTop: tiroh * 0.023 }} />
-
+            {/* <Julnivew style={{ paddingTop: tiroh * 0.023 }} /> */}
+            {tabZoq !== 'Poeck Jacn Ateians Start Application' && (
+                <TopBarView
+                    tabZoq={tabZoq}
+                    setTabZoq={setTabZoq}
+                />
+            )}
             <Julnivew style={{ flex: 1, zIndex: 1 }}>
                 {renderTabScene(tabZoq)}
             </Julnivew>
-
             {tabZoq !== 'Poeck Jacn Ateians Start Application' && (
                 <CikrLogiColifBut
                     onPress={() => setTabZoq('Poeck Jacn Ateians Start Application')}

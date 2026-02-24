@@ -9,17 +9,17 @@ import {
     SafeAreaView as UifdhSaf,
     View as NolcKriCigolXob,
 } from 'react-native';
+import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
 
-export const CoserShormOnbrigh = () => {
+export default function CoserShormOnbrigh() {
     const navQluf = logiolnc();
     const { width: ogilcWiln, height: furtiHonl } = usewindSinsin();
     const [blintIdx, setBlintIdx] = olnsta(0);
 
     const rignZobrshOlg = [
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/catchuser/TrainLogicWithFruitPatterns.png'),
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/catchuser/ThinkFastStayFocused.png'),
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/catchuser/DifferentLogicTypes.png'),
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/catchuser/CustomizeYourBackgrounds.png'),
+        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/WelcomeToMightyForceRush.png'),
+        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/ChooseTheRightAssociation.png'),
+        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/KeepTheMomentumGoing.png'),
     ];
 
     const handleZoq = async () => {
@@ -47,46 +47,24 @@ export const CoserShormOnbrigh = () => {
             <UifdhSaf />
             <RiutZombrOlic style={{
                 width: ogilcWiln,
-
                 position: 'absolute',
-
                 height: furtiHonl,
-
             }}
                 resizeMode="cover"
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/lights.png')}
-            />
-            <RiutZombrOlic style={{
-                marginTop: furtiHonl * 0.1,
-                position: 'absolute',
-                width: ogilcWiln * 0.86,
-                height: furtiHonl * 0.64,
-            }}
-                resizeMode="contain"
                 source={curZintImg}
             />
 
-            <IncoRufiLikPaticity style={{
-                bottom: furtiHonl * 0.03,
-                alignSelf: 'center',
-                position: 'absolute',
-            }} onPress={handleZoq}>
-                <RiutZombrOlic source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/next.png')} style={{
-                    height: furtiHonl * 0.08,
-
-
-
-                    resizeMode: 'contain',
-
-
-
-                    width: ogilcWiln * 0.4,
-
-
-
+            <CikrLogiColifBut
+                onPress={handleZoq}
+                buttonText={blintIdx === rignZobrshOlg.length - 1 ? 'Start' : 'Next'}
+                stirifonRozm={ogilcWiln * 0.059}
+                morStilOfWrapBtn={{
+                    position: 'absolute',
+                    zIndex: 10,
+                    alignSelf: 'center',
+                    bottom: furtiHonl * 0.039,
                 }}
-                />
-            </IncoRufiLikPaticity>
+            />
         </NolcKriCigolXob>
     );
 };

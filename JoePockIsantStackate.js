@@ -19,7 +19,7 @@ const YintGropTree = () => {
 
     return (
         <Convigater>
-            <ZoqNavigator initialRouteName="CofurLoadaingTutir" screenOptions={{
+            <ZoqNavigator initialRouteName="IantsAckOnbords" screenOptions={{
                 animationEnabled: true,
                 contentStyle: { backgroundColor: '#1D1E2B' },
             }}
