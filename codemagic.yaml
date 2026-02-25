@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       groups:
-        - foln-rist-furi-creds  # <----
+        - orfc-usht-creds  # <----
       vars:
         BUNDLE_ID: "com.force.rush.might.app" # <----
         XCODE_SCHEME: "MightyForceRushMit" # <----
