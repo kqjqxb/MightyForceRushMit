@@ -1,38 +1,36 @@
+import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { shihtOnts } from '../shihtOnts';
 import React, { useEffect, useState } from 'react';
 import {
-    View as PonakXob,
-    Dimensions as ResizOfTheScn,
-    Image,
-    Text,
     Share,
+    Image, View, Text,
+    Dimensions,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
-import { dranesofnts } from '../dranesofnts';
 
 const medals = [
     {
+        img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/brnz.png'), // заміни на свій шлях
+        desc: 'For passing level 5!',
         key: 'bronze',
         title: 'Bronze',
-        desc: 'For passing level 5!',
-        img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/brnz.png'), // заміни на свій шлях
     },
     {
-        key: 'silver',
-        title: 'Silver',
         desc: 'For passing level 10!',
         img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/silv.png'), // заміни на свій шлях
+        title: 'Silver',
+        key: 'silver',
     },
     {
-        key: 'gold',
         title: 'Gold',
-        desc: 'For completing the Mighty Rush mode',
         img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/gold.png'), // заміни на свій шлях
+        desc: 'For completing the Mighty Rush mode',
+        key: 'gold',
     },
 ];
 
 export default function TyhAchievmentsMur() {
-    const { width: oepiw, height: snah } = ResizOfTheScn.get('window');
+    const { width: oepiw, height: snah } = Dimensions.get('window');
     const medalSize = oepiw * 0.23;
     const cardHeight = snah * 0.22;
     const cardRadius = oepiw * 0.06;
@@ -40,7 +38,6 @@ export default function TyhAchievmentsMur() {
     const fontTitle = oepiw * 0.07;
     const fontDesc = oepiw * 0.045;
 
-    const [completedLevels, setCompletedLevels] = useState<number[]>([]);
     const [achievements, setAchievements] = useState({
         bronze: false,
         silver: false,
@@ -51,7 +48,7 @@ export default function TyhAchievmentsMur() {
         (async () => {
             // Отримуємо масив пройдених рівнів
             const levelsRaw = await AsyncStorage.getItem('mightyForMitLevels');
-            let levels: number[] = [];
+            let levels: boolean[] = [];
             if (levelsRaw) {
                 try {
                     levels = JSON.parse(levelsRaw);
@@ -60,13 +57,17 @@ export default function TyhAchievmentsMur() {
                     levels = [];
                 }
             }
-            setCompletedLevels(levels);
+            // рахуємо кількість true
+            const trueCount = levels.filter(Boolean).length;
 
-            // Трекінг ачівок по кількості пройдених рівнів
+            console.log('Fetched levels from storage:', levels);
+            
+            const isRushPassed = await AsyncStorage.getItem('mightyRushPassed');
+
             setAchievements({
-                bronze: levels.length >= 5,
-                silver: levels.length >= 10,
-                gold: levels.length >= 20, // змінити число якщо треба
+                bronze: trueCount >= 5,
+                silver: trueCount >= 10,
+                gold: isRushPassed === 'true',
             });
         })();
     }, []);
@@ -78,100 +79,92 @@ export default function TyhAchievmentsMur() {
     };
 
     return (
-        <PonakXob style={{
+        <View style={{
+            paddingTop: snah * 0.04,
+            justifyContent: 'flex-start',
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'flex-start',
-            paddingTop: snah * 0.04,
         }}>
             {medals.map((medal, idx) => {
                 const unlocked = achievements[medal.key as keyof typeof achievements];
                 return (
-                    <PonakXob
+                    <View
                         key={medal.key}
                         style={{
-                            flexDirection: 'row',
                             alignItems: 'center',
-                            backgroundColor: '#2620A6',
-                            borderRadius: cardRadius,
                             marginBottom: cardMargin,
                             width: oepiw * 0.88,
-                            height: cardHeight,
-                            borderWidth: oepiw * 0.005,
+                            backgroundColor: '#2620A6',
+                            borderRadius: cardRadius,
+                            flexDirection: 'row',
                             borderColor: '#FFD076',
+                            borderWidth: oepiw * 0.005,
                             paddingHorizontal: oepiw * 0.04,
+                            height: cardHeight,
                         }}
                     >
                         {unlocked ? (
                             <>
-                                <Image
-                                    source={medal.img}
-                                    style={{
-                                        width: oepiw * 0.3,
-                                        height: oepiw * 0.3,
-                                        borderRadius: medalSize / 2,
-                                        marginRight: oepiw * 0.04,
-                                    }}
+                                <Image source={medal.img} style={{
+                                    marginRight: oepiw * 0.04,
+                                    borderRadius: medalSize / 2,
+                                    width: oepiw * 0.3,
+                                    height: oepiw * 0.3,
+                                }}
                                 />
-                                <PonakXob style={{
-                                    flex: 1,
-                                    alignItems: 'center',
-                                }}>
+                                <View style={{ flex: 1, alignItems: 'center', }}>
                                     <Text style={{
-                                        color: '#C6C7E9',
-                                        fontSize: fontTitle,
-                                        fontFamily: dranesofnts.foriLexenMed,
                                         marginBottom: snah * 0.01,
+                                        fontFamily: shihtOnts.foriLexenMed,
+                                        fontSize: fontTitle,
+                                        color: '#C6C7E9',
                                     }}>
                                         {medal.title}
                                     </Text>
                                     <Text style={{
-                                        color: '#C6C7E9',
-                                        fontSize: fontDesc,
-                                        fontFamily: dranesofnts.foriLexenLit,
                                         marginBottom: snah * 0.02,
+                                        fontFamily: shihtOnts.foriLexenLit,
+                                        fontSize: fontDesc,
+                                        color: '#C6C7E9',
                                     }}>
                                         {medal.desc}
                                     </Text>
                                     <CikrLogiColifBut
+                                        timiTixtLbl={'Share'}
                                         onPress={() => handleShare(medal.title)}
-                                        buttonText={'Share'}
-                                        morStilOfWrapBtn={{
-                                            width: oepiw * 0.43,
-                                            height: snah * 0.053,
-                                        }}
+                                        adothStyliOfCont={{ width: oepiw * 0.43, height: snah * 0.053, }}
                                     />
-                                </PonakXob>
+                                </View>
                             </>
                         ) : (
                             <>
-                                <PonakXob style={{
-                                    width: cardHeight * 0.64,
+                                <View style={{
+                                    opacity: 0.6,
+                                    borderWidth: oepiw * 0.008,
+                                    justifyContent: 'center',
                                     height: cardHeight * 0.64,
                                     borderRadius: cardHeight / 2,
-                                    backgroundColor: '#C6C7E9',
-                                    opacity: 0.6,
                                     marginRight: oepiw * 0.04,
-                                    borderWidth: oepiw * 0.008,
                                     borderColor: '#FFD076',
+                                    width: cardHeight * 0.64,
                                     alignItems: 'center',
-                                    justifyContent: 'center',
+                                    backgroundColor: '#C6C7E9',
                                 }} />
-                                <PonakXob style={{ flex: 1, justifyContent: 'center' }}>
+                                <View style={{ justifyContent: 'center', flex: 1, }}>
                                     <Text style={{
-                                        color: '#C6C7E9',
                                         fontSize: fontDesc,
-                                        fontFamily: dranesofnts.foriLexenLit,
                                         textAlign: 'center',
+                                        fontFamily: shihtOnts.foriLexenLit,
+                                        color: '#C6C7E9',
                                     }}>
                                         You didn't{'\n'}get this medal
                                     </Text>
-                                </PonakXob>
+                                </View>
                             </>
                         )}
-                    </PonakXob>
+                    </View>
                 );
             })}
-        </PonakXob>
+        </View>
     );
 }

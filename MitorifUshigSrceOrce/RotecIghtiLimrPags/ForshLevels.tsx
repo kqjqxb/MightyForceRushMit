@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { mifoQwests } from '../ArceGishHumiAsteses/mifoQwests';
-import StartLevelsScreen from './StartLevelsScreen';
-import QuizScreen from './QuizScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ResultScreen from './ResultScreen';
+import QuizScreen from './QuizScreen';
+import StartLevelsScreen from './StartLevelsScreen';
+import React, { useState, useEffect } from 'react';
 
 const LEVELS_COUNT = 10;
 const STORAGE_KEY = 'mightyForMitLevels';
@@ -20,7 +20,7 @@ export default function ForshLevels() {
             try {
                 const stored = await AsyncStorage.getItem(STORAGE_KEY);
                 if (stored) setPassedLevels(JSON.parse(stored));
-            } catch {}
+            } catch { }
             setLoading(false);
         })();
     }, []);
@@ -65,32 +65,32 @@ export default function ForshLevels() {
     if (screen === 'levels') {
         return (
             <StartLevelsScreen
-                currentLevel={currentLevel}
-                setCurrentLevel={setCurrentLevel}
-                passedLevels={passedLevels}
                 startQuiz={startQuiz}
+                passedLevels={passedLevels}
+                setCurrentLevel={setCurrentLevel}
+                currentLevel={currentLevel}
             />
         );
     }
     if (screen === 'quiz') {
         return (
             <QuizScreen
-                currentLevel={currentLevel}
                 userAnswers={userAnswers}
-                setUserAnswers={setUserAnswers}
                 goToResult={goToResult}
+                currentLevel={currentLevel}
+                setUserAnswers={setUserAnswers}
             />
         );
     }
     if (screen === 'result') {
         return (
             <ResultScreen
-                currentLevel={currentLevel}
-                userAnswers={userAnswers}
                 passedLevels={passedLevels}
-                setCurrentLevel={setCurrentLevel}
                 restartLevel={restartLevel}
+                userAnswers={userAnswers}
+                currentLevel={currentLevel}
                 backToLevels={backToLevels}
+                setCurrentLevel={setCurrentLevel}
             />
         );
     }

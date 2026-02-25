@@ -1,8 +1,8 @@
-import JoePockIsantStackate from './JoePockIsantStackate';
 import React from 'react';
+import ForisOigmStackShor from './ForisOigmStackShor';
 
 function App() {
-  return <JoePockIsantStackate />;
+  return <ForisOigmStackShor />;
 }
 
 export default App;

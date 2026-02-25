@@ -1,26 +1,26 @@
+import { shihtOnts } from '../shihtOnts';
 import React from 'react';
-import { Dimensions, View as Julnivew, TouchableOpacity, Image as Zobroln } from 'react-native';
 import { Text } from 'react-native-gesture-handler';
-import { dranesofnts } from '../dranesofnts';
+import { TouchableOpacity, Dimensions, Image, View, } from 'react-native';
 
 type TopBarViewProps = {
     tabZoq: string;
     setTabZoq: (tab: any) => void;
     myWidth: number;
 };
-const {width: myWidth, height: myHeight} = Dimensions.get('window');
+const { width: myWidth, height: myHeight } = Dimensions.get('window');
 
 const TopBarView: React.FC<TopBarViewProps> = ({ tabZoq, setTabZoq }) => (
-    <Julnivew style={{
-        alignSelf: 'center',
+    <View style={{
         width: myWidth * 0.91,
-        alignItems: 'center',
+        alignSelf: 'center',
+        zIndex: 10,
         justifyContent: 'space-between',
         flexDirection: 'row',
-        zIndex: 10,
+        alignItems: 'center',
     }}>
-        <TouchableOpacity onPress={() => setTabZoq('Poeck Jacn Ateians Start Application')}>
-            <Zobroln
+        <TouchableOpacity onPress={() => setTabZoq('Ritum Ighty Localize Of Apka')}>
+            <Image
                 source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/barowinthebordr.png')}
                 style={{
                     width: myWidth * 0.14,
@@ -31,18 +31,18 @@ const TopBarView: React.FC<TopBarViewProps> = ({ tabZoq, setTabZoq }) => (
         </TouchableOpacity>
 
         <Text style={[{
-            letterSpacing: 1,
+            fontFamily: shihtOnts.foriLexenBod,
             textAlign: 'center',
-            paddingHorizontal: myWidth * 0.04,
-            fontFamily: dranesofnts.foriLexenBod,
-            color: '#C6C7E9',
             fontSize: myWidth * 0.064,
+            color: '#C6C7E9',
+            paddingHorizontal: myWidth * 0.04,
+            letterSpacing: 1,
         }]} numberOfLines={1} adjustsFontSizeToFit>
             {tabZoq}
         </Text>
 
-        <Julnivew style={{ width: myWidth * 0.14 }} />
-    </Julnivew>
+        <View style={{ width: myWidth * 0.14 }} />
+    </View>
 );
 
 export default TopBarView;

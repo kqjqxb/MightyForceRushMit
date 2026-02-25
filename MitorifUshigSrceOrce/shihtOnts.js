@@ -1,4 +1,4 @@
-export const dranesofnts = {
+export const shihtOnts = {
     foriLexenBod: 'Lexend-Bold',
     foriLexenMed: 'Lexend-Medium',
     foriLexenReg: 'Lexend-Regular',

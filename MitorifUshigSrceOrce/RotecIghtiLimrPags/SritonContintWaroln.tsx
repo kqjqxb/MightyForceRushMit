@@ -1,101 +1,73 @@
 import {
-    Dimensions as Lofismn,
-    View as Julnivew,
-    SafeAreaView as Stafe,
-    Image as Zobroln,
-    TouchableOpacity,
+    Image as Blopimg,
+
+    View as Frobvex,
+
+    Dimensions as Xyzzor,
+
+    SafeAreaView as Qwintar,
 } from 'react-native';
-import React, {
-    useState as furtStatilo,
-    useEffect as furtrikEfechn,
-} from 'react';
-type Cagesbe =
+import React, { useState as useZintok } from 'react';
+type Qlartype =
     | 'About App'
-    | 'Settings'
     | 'Game Modes'
-    | 'Poeck Jacn Ateians Start Application'
+    | 'Settings'
+    | 'Ritum Ighty Localize Of Apka'
     | 'Points Exchange';
 
+const { width: xigmerw, height: shyvysheh } = Xyzzor.get('window');
 import ZoqQwexComp from './PoetJaekHomeTians';
+import MightyRushQuizScreen from './MightyRushQuizScreen';
 import TopBarView from './TopBarView';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
-import { Text } from 'react-native-gesture-handler';
-import { dranesofnts } from '../dranesofnts';
 import TyhAchievmentsMur from './TyhAchievmentsMur';
 import StatisticsRuforMygh from './StatisticsRuforMygh';
 import ForshLevels from './ForshLevels';
 
-const { width: fitukwot, height: tiroh } = Lofismn.get('window');
 
-const QlopObgrZoq: React.FC = () => {
-    const [tabZoq, setTabZoq] = furtStatilo<Cagesbe>('Poeck Jacn Ateians Start Application');
-    const [curBgZoq, setCurBgZoq] = furtStatilo<number>(0);
+const DrintFrozz: React.FC = () => {
+    const [klypt, setKlypt] = useZintok<Qlartype>('Ritum Ighty Localize Of Apka');
 
-    // Load active background from AsyncStorage
-    furtrikEfechn(() => {
-        let isZoqActive = true;
-        (async () => {
-            try {
-                const idx = await AsyncStorage.getItem('plopGateActiveBg');
-                if (!isZoqActive) return;
-                if (idx === null) {
-                    await AsyncStorage.setItem('plopGateActiveBg', '0');
-                    setCurBgZoq(0);
-                } else {
-                    setCurBgZoq(Number(idx) || 0);
-                }
-            } catch { }
-        })();
-        return () => { isZoqActive = false; };
-    }, []);
-
-    const renderTabScene = (tab: Cagesbe) => {
+    const zorbScene = (tab: Qlartype) => {
         switch (tab) {
-            case 'Poeck Jacn Ateians Start Application':
-                return <ZoqQwexComp setActiveTab={setTabZoq} />;
+            case 'Ritum Ighty Localize Of Apka':
+                return <ZoqQwexComp setActiveTab={setKlypt} />;
             case 'My achievements':
                 return <TyhAchievmentsMur />;
             case 'Statistics':
                 return <StatisticsRuforMygh />;
             case 'Start level':
+                return <ForshLevels />;
             case 'Mighty Rush':
-                return <ForshLevels />
+                return <MightyRushQuizScreen setTabZoq={setKlypt} />;
             default:
                 return null;
         }
     };
 
     return (
-        <Julnivew style={{
-            width: fitukwot,
-            height: tiroh,
-            flex: 1,
-            backgroundColor: '#100B09',
-        }}>
-            <Stafe />
-            <Zobroln style={{
-                alignSelf: 'center',
+        <Frobvex style={{ flex: 1, height: shyvysheh, width: xigmerw, backgroundColor: '#100B09', }}>
+            <Qwintar />
+            <Blopimg style={{
+                height: shyvysheh * 1.04,
                 position: 'absolute',
-                width: fitukwot * 1.04,
-                height: tiroh * 1.04,
-                top: -tiroh * 0.02,
+                top: -shyvysheh * 0.02,
+                width: xigmerw * 1.04,
+                alignSelf: 'center',
             }}
                 source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png')}
             />
-            {/* <Julnivew style={{ paddingTop: tiroh * 0.023 }} /> */}
-            {tabZoq !== 'Poeck Jacn Ateians Start Application' && (
+            {/* <Frobvex style={{ paddingTop: shyvysheh * 0.023 }} /> */}
+            {klypt !== 'Ritum Ighty Localize Of Apka' && (
                 <TopBarView
-                    tabZoq={tabZoq}
-                    setTabZoq={setTabZoq}
+                    setTabZoq={setKlypt}
+                    tabZoq={klypt}
                 />
             )}
-            <Julnivew style={{ flex: 1, zIndex: 1 }}>
-                {renderTabScene(tabZoq)}
-            </Julnivew>
-        </Julnivew>
+            <Frobvex style={{ flex: 1, zIndex: 1 }}>
+                {zorbScene(klypt)}
+            </Frobvex>
+        </Frobvex>
     );
 };
 
-export default QlopObgrZoq;
+export default DrintFrozz;

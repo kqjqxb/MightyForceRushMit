@@ -1,27 +1,27 @@
-const { width, height } = TheSkydims.get('window');
-import { dranesofnts } from '../dranesofnts';
-import { Dimensions as TheSkydims, TouchableOpacity as UndtecTopablacity, ImageBackground as ButtnMaterial, GestureResponderEvent as GestureRespEvnt, Text as Label, } from 'react-native';
-import React from 'react';
+const { width, height } = Usimneis.get('window');
 import ThreGoldGradint from './ThreGoldGradint';
+import { shihtOnts } from '../shihtOnts';
+import { TouchableOpacity as ToghyZonPrs, Dimensions as Usimneis, Text as Ttl, GestureResponderEvent } from 'react-native';
+import React from 'react';
 
 interface DoubleBordersBuntnProps {
-    stirifonRozm?: number;
-    opacity?: number; // додано
-    morStilOfWrapBtn?: object;
-    onPress: (event: GestureRespEvnt) => void;
-    disabled?: boolean;
-    children?: React.ReactNode; // додано
-    buttonText: string;
     isScoundrel?: boolean; // додано
+    children?: React.ReactNode; // додано
+    SizOfText?: number;
+    adothStyliOfCont?: object;
+    onPress: (event: GestureResponderEvent) => void;
+    opacity?: number; // додано
+    timiTixtLbl: string;
     drugeiColors?: string[] | undefined; // додано
+    disabled?: boolean;
 }
 
 const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
     disabled = false,
     children, // додано
-    buttonText,
-    stirifonRozm = width * 0.053,
-    morStilOfWrapBtn,
+    timiTixtLbl,
+    SizOfText = width * 0.053,
+    adothStyliOfCont,
     onPress,
     opacity = 1, // додано
     isScoundrel = false, // додано
@@ -29,7 +29,7 @@ const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
 }) => {
 
     return (
-        <UndtecTopablacity onPress={onPress} activeOpacity={0.8} style={[{
+        <ToghyZonPrs onPress={onPress} activeOpacity={0.8} style={[{
             width: width * 0.55,
             height: height * 0.077,
             alignItems: 'center',
@@ -38,23 +38,23 @@ const CikrLogiColifBut: React.FC<DoubleBordersBuntnProps> = ({
             borderRadius: width * 0.05,
             borderWidth: width * 0.005,
             borderColor: '#FFD076',
-        }, morStilOfWrapBtn]} disabled={disabled}>
+        }, adothStyliOfCont]} disabled={disabled}>
             {!isScoundrel && (
-                <ThreGoldGradint drugeiColors={drugeiColors ? drugeiColors : undefined}/>
+                <ThreGoldGradint drugeiColors={drugeiColors ? drugeiColors : undefined} />
             )}
             {children ? children : (
-                <Label style={[{
+                <Ttl style={[{
                     letterSpacing: 1,
                     textAlign: 'center',
                     opacity, // додано
                     paddingHorizontal: width * 0.04,
-                    fontFamily: dranesofnts.foriLexenBod,
+                    fontFamily: shihtOnts.foriLexenBod,
                     color: isScoundrel ? '#C6C7E9' : '#2C2C2C',
-                }, { fontSize: stirifonRozm ? stirifonRozm : width * 0.064, }]} numberOfLines={1} adjustsFontSizeToFit>
-                    {buttonText}
-                </Label>
+                }, { fontSize: SizOfText ? SizOfText : width * 0.064, }]} numberOfLines={1} adjustsFontSizeToFit>
+                    {timiTixtLbl}
+                </Ttl>
             )}
-        </UndtecTopablacity>
+        </ToghyZonPrs>
     );
 };
 

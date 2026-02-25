@@ -1,83 +1,79 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Dimensions as Frumeinsin, Image as JiklopImg } from 'react-native';
-import { useNavigation as usegicof } from '@react-navigation/native';
-const KROPT_FLAG = 'Fruit-Coln-Logic-Strike-Key-Flag-1';
-import { SafeAreaView as QytrSafe } from 'react-native-safe-area-context';
-import CircleBlueSpinned from '../GohyShimEcrCompston/CircleBlueSpinned';
-import React, { useEffect as zqtruf } from 'react';
+import { Dimensions as VORPAL, Image as ImgZint } from 'react-native';
+import { useNavigation as useNexodus } from '@react-navigation/native';
+const CONST_FLG_BZKA = 'Mighty-Forshe-dfg43t-Miture-FLG-32reds-rfsdgre';
+import { SafeAreaView as Sarefah } from 'react-native-safe-area-context';
+import CubesChangedBySomth from '../GohyShimEcrCompston/CubesChangedBySomth';
+import React, { useEffect as useFectin } from 'react';
 
-const XyntrickLoadiRuloln = (): React.ReactElement => {
-    const navXyq = usegicof();
-    const { width: coliw, height: logih } = Frumeinsin.get('window');
+const QuantumLoader = (): React.ReactElement => {
+    const navBaz = useNexodus();
+    const { width: pixelswisd, height: shuhi } = VORPAL.get('window');
 
-    zqtruf(() => {
-        let isXyqActive = true;
-        const randomZolp = Math.floor(Math.random() * 900);
+    useFectin(() => {
+        let alivePrapr = true;
+        const delayRandomizer = Math.floor(Math.random() * 900);
 
-        const runKroptFlag = async () => {
+        const triggOrceFgl = async () => {
             try {
-                const bootFlag = await AsyncStorage.getItem(KROPT_FLAG);
-                if (!bootFlag) {
-                    await AsyncStorage.setItem(KROPT_FLAG, 'scratched');
+                const flagValue = await AsyncStorage.getItem(CONST_FLG_BZKA);
+                if (!flagValue) {
+                    await AsyncStorage.setItem(CONST_FLG_BZKA, 'scratched');
                 }
 
                 setTimeout(() => {
-                    if (!isXyqActive) return;
+                    if (!alivePrapr) return;
 
                     setTimeout(() => {
-                        if (!isXyqActive) return;
-                        navXyq.replace(
-                            bootFlag ? 'SritonContintWaroln' : 'IantsAckOnbords'
+                        if (!alivePrapr) return;
+                        navBaz.replace(
+                            flagValue ? 'SritonContintWaroln' : 'ShytuiOnboaidrItoc'
                         );
-                    }, 1000 + randomZolp);
+                    }, 1000 + delayRandomizer);
                 }, 3000);
-            } catch (err) {
-                if (__DEV__) console.warn('KroptFlag::fail', err);
+            } catch (errQuantum) {
+                if (__DEV__) console.warn('BazookaFlag::fail', errQuantum);
             }
         };
 
-        runKroptFlag();
+        triggOrceFgl();
 
         return () => {
-            isXyqActive = false;
+            alivePrapr = false;
         };
-    }, [navXyq, coliw]);
+    }, [navBaz, pixelswisd]);
 
     return (
-        <QytrSafe style={{
-            height: logih,
-
-            flex: 1,
-
-            justifyContent: 'center',
-
-            width: coliw,
-
+        <Sarefah style={{
+            width: pixelswisd,
             alignItems: 'center',
+            height: shuhi,
+            justifyContent: 'center',
+            flex: 1,
         }}>
-            <JiklopImg resizeMode="cover" style={{  zIndex: 0,height: logih * 1.2,width: coliw,}}
+            <ImgZint resizeMode="cover" style={{ zIndex: 0, height: shuhi * 1.2, width: pixelswisd,
+                position: 'absolute',
+             }}
                 source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png')}
             />
 
-            {/* <JiklopImg style={{
-                zIndex: 0, width: coliw * 0.8, alignSelf: 'center',
-                top: logih * 0.1,
-                position: 'absolute',
-                height: logih * 0.25,
+            <ImgZint style={{
+                zIndex: 0, width: pixelswisd, alignSelf: 'center',
+                height: pixelswisd,
                 }}
                 resizeMode="contain"
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/elementsformain.png')}
-            /> */}
+                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/burload.png')}
+            />
 
-            <QytrSafe style={{
-                bottom: logih * 0.1,
+            <Sarefah style={{
+                bottom: shuhi * 0.1,
                 position: 'absolute',
                 alignSelf: 'center',
             }}>
-                <CircleBlueSpinned />
-            </QytrSafe>
-        </QytrSafe>
+                <CubesChangedBySomth />
+            </Sarefah>
+        </Sarefah>
     );
 };
 
-export default XyntrickLoadiRuloln;
+export default QuantumLoader;

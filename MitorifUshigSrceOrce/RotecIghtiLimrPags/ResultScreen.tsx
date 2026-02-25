@@ -1,116 +1,129 @@
-import React from 'react';
-import { View, Dimensions, Text, TouchableOpacity } from 'react-native';
-import { dranesofnts } from '../dranesofnts';
+import { shihtOnts } from '../shihtOnts';
 import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import { View, Dimensions, Text, TouchableOpacity } from 'react-native';
 import { mifoQwests } from '../ArceGishHumiAsteses/mifoQwests';
+import React from 'react';
 
-const { width: oepiw, height: snah } = Dimensions.get('window');
+const { width: uimorw, height: gihyh } = Dimensions.get('window');
 const LEVELS_COUNT = 10;
 const PASSED_COLORS = ['#34D73E', '#94F997', '#28BA20'];
 
 interface Props {
-    currentLevel: number;
+    setCurrentLevel?: (level: number) => void;
     userAnswers: number[];
-    passedLevels: boolean[];
-    setCurrentLevel: (level: number) => void;
-    restartLevel: () => void;
+    passedLevels?: boolean[];
+    questions?: { word: string; options: string[]; correct: number }[];
+    restartLevel?: () => void;
     backToLevels: () => void;
+    currentLevel?: number;
+    customTexts?: {
+        winTitle?: string;
+        scoreLabel?: string;
+        loseTitle?: string;
+        shareButton?: string;
+        loseSubtitle?: string;
+        backButton?: string;
+        winSubtitle?: string;
+        notGreen?: boolean;
+    };
+    onShare?: () => void;
 }
 
 export default function ResultScreen({
-    currentLevel,
+    currentLevel = 0,
     userAnswers,
     passedLevels,
     setCurrentLevel,
     restartLevel,
     backToLevels,
+    questions,
+    customTexts,
+    onShare,
+    notGreen,
 }: Props) {
+    const questionsArr = questions || mifoQwests[currentLevel];
     const correctCount = userAnswers.reduce((acc, ansIdx, idx) => {
-        return acc + (ansIdx === mifoQwests[currentLevel][idx].correct ? 1 : 0);
+        return acc + (ansIdx === questionsArr[idx].correct ? 1 : 0);
     }, 0);
-    const isPassed = correctCount >= 4;
+    const isPassed = customTexts
+        ? correctCount >= 16
+        : correctCount >= 4;
     const isLastLevel = currentLevel === LEVELS_COUNT - 1;
     const nextLevel = currentLevel + 1;
 
-    const handleResultBtn = () => {
-        if (isPassed && !isLastLevel) {
-            setCurrentLevel(nextLevel);
-            restartLevel();
-        } else {
-            backToLevels();
-        }
-    };
+    // Mighty Rush custom texts
+    const scoreLabel = customTexts?.scoreLabel || 'Your Score:';
+    const winTitle = customTexts?.winTitle || (isLastLevel ? 'You win!' : 'You won!');
+    const winSubtitle = customTexts?.winSubtitle || (isLastLevel ? 'You received a medal, see it in achievements!' : 'Congratulations!\nNext level unlocked.');
+    const loseTitle = customTexts?.loseTitle || 'You lost';
+    const loseSubtitle = customTexts?.loseSubtitle || 'Do you want to try again?';
+    const shareButton = customTexts?.shareButton || (isPassed
+        ? (isLastLevel ? 'Back to levels' : `Start level ${nextLevel + 1}`)
+        : `Restart level ${currentLevel + 1}`);
+    const backButton = customTexts?.backButton || 'Back home';
 
     return (
         <View style={{
-            flex: 1,
+            paddingTop: gihyh * 0.09,
             alignItems: 'center',
+            flex: 1,
             justifyContent: 'flex-start',
-            paddingTop: snah * 0.09,
         }}>
             {/* Bull image */}
-            <View style={{ marginBottom: snah * 0.04 }}>
+            <View style={{ marginBottom: gihyh * 0.04 }}>
                 {/* Тут має бути ваш компонент з биком */}
             </View>
             <View style={{
-                width: oepiw * 0.85,
-                backgroundColor: 'rgba(70, 64, 206, 0.3)',
-                borderRadius: oepiw * 0.05,
-                paddingVertical: snah * 0.03,
-                alignItems: 'center',
-                borderWidth: 1,
+                paddingVertical: gihyh * 0.03,
                 borderColor: '#FFD076',
+                width: uimorw * 0.85,
+                borderRadius: uimorw * 0.05,
+                borderWidth: 1,
+                alignItems: 'center',
+                backgroundColor: 'rgba(70, 64, 206, 0.3)',
             }}>
                 <Text style={{
-                    fontFamily: dranesofnts.foriLexenBod,
-                    fontSize: oepiw * 0.045,
+                    marginBottom: gihyh * 0.01,
                     color: '#C6C7E9',
-                    marginBottom: snah * 0.01,
-                }}>Your Score: {correctCount}</Text>
+                    fontSize: uimorw * 0.045,
+                    fontFamily: shihtOnts.foriLexenBod,
+                }}>{scoreLabel} {correctCount}</Text>
                 <Text style={{
-                    fontFamily: dranesofnts.foriLexenBod,
-                    fontSize: oepiw * 0.07,
+                    marginBottom: gihyh * 0.025,
+                    fontSize: uimorw * 0.07,
                     color: '#fff',
-                    marginBottom: snah * 0.025,
-                }}>{isPassed ? (isLastLevel ? 'You won!' : 'You won!') : 'You lost'}</Text>
-                <Text style={{
-                    fontFamily: dranesofnts.foriLexenLit,
-                    fontSize: oepiw * 0.045,
-                    color: '#C6C7E9',
-                    marginBottom: snah * 0.025,
-                    textAlign: 'center',
+                    fontFamily: shihtOnts.foriLexenBod,
                 }}>
-                    {isPassed
-                        ? (isLastLevel
-                            ? 'Всі рівні успішно пройдено!'
-                            : 'Congratulations!\nNext level unlocked.')
-                        : 'Do you want to try again?'}
+                    {isPassed ? winTitle : loseTitle}
+                </Text>
+                <Text style={{
+                    marginBottom: gihyh * 0.025,
+                    fontSize: uimorw * 0.045,
+                    textAlign: 'center',
+                    color: '#C6C7E9',
+                    fontFamily: shihtOnts.foriLexenLit,
+                }}>
+                    {isPassed ? winSubtitle : loseSubtitle}
                 </Text>
                 <CikrLogiColifBut
-                    onPress={handleResultBtn}
-                    buttonText={
-                        isPassed
-                            ? (isLastLevel
-                                ? 'Back to levels'
-                                : `Start level ${nextLevel + 1}`)
-                            : `Restart level ${currentLevel + 1}`
-                    }
-                    morStilOfWrapBtn={{
-                        width: oepiw * 0.7,
-                        height: snah * 0.07,
-                        marginBottom: snah * 0.015,
-                        marginTop: snah * 0.01,
-                    }}
                     isScoundrel={false}
-                    drugeiColors={isPassed ? PASSED_COLORS : undefined}
+                    timiTixtLbl={shareButton}
+                    drugeiColors={!notGreen && isPassed ? PASSED_COLORS : undefined}
+                    onPress={isPassed && onShare ? onShare : (restartLevel || backToLevels)}
+                    adothStyliOfCont={{
+                        marginTop: gihyh * 0.01,
+                        marginBottom: gihyh * 0.015,
+                        height: gihyh * 0.07,
+                        width: uimorw * 0.7,
+                    }}
                 />
                 <TouchableOpacity onPress={backToLevels}>
                     <Text style={{
-                        fontFamily: dranesofnts.foriLexenMed,
-                        fontSize: oepiw * 0.05,
-                        color: '#C6C7E9',
                         textAlign: 'center',
-                    }}>Back home</Text>
+                        color: '#C6C7E9',
+                        fontSize: uimorw * 0.05,
+                        fontFamily: shihtOnts.foriLexenMed,
+                    }}>{backButton}</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -1,15 +1,13 @@
 import React from 'react';
 import {
     Image,
-    View as PonakXob,
-    Dimensions as ResizOfTheScn,
-    Share,
+    View,
+    Dimensions,
 } from 'react-native';
-import { dranesofnts } from '../dranesofnts';
 import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
 
 export default function ZlufHomeZoq({ setActiveTab: ylopSetTab }: { setActiveTab: (tab: any) => void }) {
-    const { width: oepiw, height: snah } = ResizOfTheScn.get('window');
+    const { width: cefow, height: shitich } = Dimensions.get('window');
 
     const buttonsMapped = [
         'Start level',
@@ -20,38 +18,32 @@ export default function ZlufHomeZoq({ setActiveTab: ylopSetTab }: { setActiveTab
 
 
     return (
-        <PonakXob style={{
-            justifyContent: 'flex-start',
-            backgroundColor: 'transparent',
-            flex: 1,
-            alignItems: 'center',
-        }}>
+        <View style={{ backgroundColor: 'transparent', flex: 1, alignItems: 'center', justifyContent: 'flex-start', }}>
             <Image
                 source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/buihmog.png')}
                 style={{
+                    marginTop: - shitich * 0.04,
                     alignSelf: 'center',
-                    width: oepiw,
-                    height: oepiw,
-                    marginTop: - snah * 0.04,
-                }}
-                resizeMode="stretch"
+                    height: cefow,
+                    width: cefow,
+                }} resizeMode="stretch"
             />
 
             {buttonsMapped.map((btn, idx) => (
                 <CikrLogiColifBut
-                    key={idx}
+                    timiTixtLbl={btn}
                     onPress={() => ylopSetTab(btn)}
-                    buttonText={btn}
-                    morStilOfWrapBtn={{
-                        zIndex: 10,
-                        alignSelf: 'center',
-                        marginBottom: snah * 0.02,  
-                        width: oepiw * 0.75,
-                    }}
                     isScoundrel={idx !== 0}
+                    key={idx}
+                    adothStyliOfCont={{
+                        width: cefow * 0.75,
+                        marginBottom: shitich * 0.02,
+                        alignSelf: 'center',
+                        zIndex: 10,
+                    }}
                 />
             ))}
 
-        </PonakXob>
+        </View>
     );
 }
