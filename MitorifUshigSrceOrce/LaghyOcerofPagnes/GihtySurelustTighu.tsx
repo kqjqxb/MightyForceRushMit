@@ -1,8 +1,9 @@
 import { shihtOnts } from '../shihtOnts';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
-import { View, Dimensions, Text, TouchableOpacity } from 'react-native';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
+import { View, Dimensions, Text, TouchableOpacity, Image } from 'react-native';
 import { mifoQwests } from '../ArceGishHumiAsteses/mifoQwests';
 import React from 'react';
+import { LanternFlyEffect } from '../OforiCimpentoniesTIghymr/LanternFlyEffect';
 
 const { width: uimorw, height: gihyh } = Dimensions.get('window');
 const LEVELS_COUNT = 10;
@@ -29,11 +30,9 @@ interface Props {
     onShare?: () => void;
 }
 
-export default function ResultScreen({
+export default function GihtySurelustTighu({
     currentLevel = 0,
     userAnswers,
-    passedLevels,
-    setCurrentLevel,
     restartLevel,
     backToLevels,
     questions,
@@ -51,9 +50,9 @@ export default function ResultScreen({
     const isLastLevel = currentLevel === LEVELS_COUNT - 1;
     const nextLevel = currentLevel + 1;
 
-    // Mighty Rush custom texts
+    // Lantern Rush custom texts
     const scoreLabel = customTexts?.scoreLabel || 'Your Score:';
-    const winTitle = customTexts?.winTitle || (isLastLevel ? 'You win!' : 'You won!');
+    const winTitle = customTexts?.winTitle || (isLastLevel ? 'You win!' : 'Lanterns launched!');
     const winSubtitle = customTexts?.winSubtitle || (isLastLevel ? 'You received a medal, see it in achievements!' : 'Congratulations!\nNext level unlocked.');
     const loseTitle = customTexts?.loseTitle || 'You lost';
     const loseSubtitle = customTexts?.loseSubtitle || 'Do you want to try again?';
@@ -69,10 +68,8 @@ export default function ResultScreen({
             flex: 1,
             justifyContent: 'flex-start',
         }}>
-            {/* Bull image */}
-            <View style={{ marginBottom: gihyh * 0.04 }}>
-                {/* Тут має бути ваш компонент з биком */}
-            </View>
+            {isPassed && <LanternFlyEffect />}
+            
             <View style={{
                 paddingVertical: gihyh * 0.03,
                 borderColor: '#FFD076',
@@ -126,6 +123,18 @@ export default function ResultScreen({
                     }}>{backButton}</Text>
                 </TouchableOpacity>
             </View>
+
+            <Image source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/lighter.png')}
+                style={{
+                    resizeMode: 'stretch',
+                    height: gihyh * 0.35,
+                    // marginBottom: -rofeh * 0.04,
+                    width: uimorw * 0.8,
+                    position: 'absolute',
+                    bottom: gihyh * 0,
+                    alignSelf: 'center',
+                }}
+            />
         </View>
     );
 }

@@ -1,4 +1,4 @@
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { shihtOnts } from '../shihtOnts';
 import React, { useEffect, useState } from 'react';
@@ -10,21 +10,21 @@ import {
 
 const medals = [
     {
-        img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/brnz.png'), // заміни на свій шлях
+        img: require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/metildls/brins.png'), // заміни на свій шлях
         desc: 'For passing level 5!',
         key: 'bronze',
-        title: 'Bronze',
+        title: '5 Minds',
     },
     {
         desc: 'For passing level 10!',
-        img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/silv.png'), // заміни на свій шлях
-        title: 'Silver',
+        img: require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/metildls/silvlite.png'), // заміни на свій шлях
+        title: '10 Minds',
         key: 'silver',
     },
     {
-        title: 'Gold',
-        img: require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/achmedals/gold.png'), // заміни на свій шлях
-        desc: 'For completing the Mighty Rush mode',
+        title: '3 Lanterns',
+        img: require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/metildls/yellihters.png'), // заміни на свій шлях
+        desc: 'For completing the Lantern Rush mode',
         key: 'gold',
     },
 ];
@@ -74,7 +74,7 @@ export default function TyhAchievmentsMur() {
 
     const handleShare = async (title: string) => {
         await Share.share({
-            message: `I got the ${title} medal in Mighty Rush!`,
+            message: `I got the ${title} medal in Lantern Rush!`,
         });
     };
 

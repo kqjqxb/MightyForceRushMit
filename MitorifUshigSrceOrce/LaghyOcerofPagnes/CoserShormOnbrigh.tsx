@@ -1,4 +1,4 @@
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation as navxenoril } from '@react-navigation/native';
 import React, { useState as usePlasma } from 'react';
@@ -16,9 +16,9 @@ export default function IntroPlink() {
     const [idxPlasma, setIdxPlasma] = usePlasma(0);
 
     const arrZorb = [
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/WelcomeToMightyForceRush.png'),
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/ChooseTheRightAssociation.png'),
-        require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/higordn/KeepTheMomentumGoing.png'),
+        require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/higordn/WelmToLantrFosh.png'),
+        require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/higordn/ChooseTheRightAssociation.png'),
+        require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/higordn/KeepTheMomentumGoing.png'),
     ];
 
     const goNextPlink = async () => {

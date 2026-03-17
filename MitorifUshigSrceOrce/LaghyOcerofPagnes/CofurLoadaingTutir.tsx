@@ -3,8 +3,9 @@ import { Dimensions as VORPAL, Image as ImgZint } from 'react-native';
 import { useNavigation as useNexodus } from '@react-navigation/native';
 const CONST_FLG_BZKA = 'Mighty-Forshe-dfg43t-Miture-FLG-32reds-rfsdgre';
 import { SafeAreaView as Sarefah } from 'react-native-safe-area-context';
-import CubesChangedBySomth from '../GohyShimEcrCompston/CubesChangedBySomth';
+import CubesChangedBySomth from '../OforiCimpentoniesTIghymr/CubesChangedBySomth';
 import React, { useEffect as useFectin } from 'react';
+import { LanternFlyEffect } from '../OforiCimpentoniesTIghymr/LanternFlyEffect';
 
 const QuantumLoader = (): React.ReactElement => {
     const navBaz = useNexodus();
@@ -30,7 +31,7 @@ const QuantumLoader = (): React.ReactElement => {
                             flagValue ? 'SritonContintWaroln' : 'ShytuiOnboaidrItoc'
                         );
                     }, 1000 + delayRandomizer);
-                }, 3000);
+                }, 5000);
             } catch (errQuantum) {
                 if (__DEV__) console.warn('BazookaFlag::fail', errQuantum);
             }
@@ -51,18 +52,19 @@ const QuantumLoader = (): React.ReactElement => {
             justifyContent: 'center',
             flex: 1,
         }}>
-            <ImgZint resizeMode="cover" style={{ zIndex: 0, height: shuhi * 1.2, width: pixelswisd,
+            <ImgZint resizeMode="cover" style={{
+                zIndex: 0, height: shuhi * 1.2, width: pixelswisd,
                 position: 'absolute',
-             }}
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/radialfon.png')}
+            }}
+                source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/radialfon.png')}
             />
-
+            <LanternFlyEffect />
             <ImgZint style={{
-                zIndex: 0, width: pixelswisd, alignSelf: 'center',
-                height: pixelswisd,
-                }}
+                zIndex: 0, width: pixelswisd * 0.8, alignSelf: 'center',
+                height: pixelswisd * 0.8,
+            }}
                 resizeMode="contain"
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/burload.png')}
+                source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/lighter.png')}
             />
 
             <Sarefah style={{

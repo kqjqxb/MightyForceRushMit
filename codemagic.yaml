@@ -5,17 +5,17 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       groups:
-        - orfc-usht-creds  # <----
+        - migfdsodfio-sdfj-aoisjfdlkso  # <----
       vars:
-        BUNDLE_ID: "com.force.rush.might.app" # <----
+        BUNDLE_ID: "com.aiso.maidftsilf.dsoqpefiozf" # <----
         XCODE_SCHEME: "MightyForceRushMit" # <----
         APP_STORE_CONNECT_ISSUER_ID: "9748eec5-9c3f-494e-9f74-3533ca9a2da2" # <----
         cocoapods: default
-        APP_STORE_CONNECT_KEY_ID: "CL757XRG7B" # <----
+        APP_STORE_CONNECT_KEY_ID: "47TCCM4CZH" # <----
         xcode: latest
         node: latest
         XCODE_WORKSPACE: "MightyForceRushMit.xcworkspace" # <----
-        APP_STORE_APP_ID: 6759629907 # <----
+        APP_STORE_APP_ID: 6760680336 # <----
     triggering:
       events:
         - push

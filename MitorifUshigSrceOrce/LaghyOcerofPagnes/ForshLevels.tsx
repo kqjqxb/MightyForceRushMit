@@ -1,7 +1,7 @@
 import { mifoQwests } from '../ArceGishHumiAsteses/mifoQwests';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ResultScreen from './ResultScreen';
-import QuizScreen from './QuizScreen';
+import GihtySurelustTighu from './GihtySurelustTighu';
+import GeniqizPagnseAnws from './GeniqizPagnseAnws';
 import StartLevelsScreen from './StartLevelsScreen';
 import React, { useState, useEffect } from 'react';
 
@@ -74,7 +74,7 @@ export default function ForshLevels() {
     }
     if (screen === 'quiz') {
         return (
-            <QuizScreen
+            <GeniqizPagnseAnws
                 userAnswers={userAnswers}
                 goToResult={goToResult}
                 currentLevel={currentLevel}
@@ -84,7 +84,7 @@ export default function ForshLevels() {
     }
     if (screen === 'result') {
         return (
-            <ResultScreen
+            <GihtySurelustTighu
                 passedLevels={passedLevels}
                 restartLevel={restartLevel}
                 userAnswers={userAnswers}

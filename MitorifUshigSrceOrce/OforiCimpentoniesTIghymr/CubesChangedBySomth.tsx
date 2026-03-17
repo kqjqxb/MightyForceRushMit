@@ -30,7 +30,7 @@ const CubesChangedBySomth = () => {
         }
         .loadingspinner div {
           display: inline-block;
-          background: darkorange;
+          background: #FC0100;
           border: none;
           border-radius: 2px;
           width: var(--square);

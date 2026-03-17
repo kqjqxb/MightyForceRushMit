@@ -19,9 +19,9 @@ const TopBarView: React.FC<TopBarViewProps> = ({ tabZoq, setTabZoq }) => (
         flexDirection: 'row',
         alignItems: 'center',
     }}>
-        <TouchableOpacity onPress={() => setTabZoq('Ritum Ighty Localize Of Apka')}>
+        <TouchableOpacity onPress={() => setTabZoq('Lanrtn Suhri Tigiy Loc')}>
             <Image
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/barowinthebordr.png')}
+                source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/barowinthebordr.png')}
                 style={{
                     width: myWidth * 0.14,
                     height: myWidth * 0.14,

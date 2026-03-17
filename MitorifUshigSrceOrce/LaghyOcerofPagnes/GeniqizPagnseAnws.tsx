@@ -1,7 +1,8 @@
-import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, TouchableOpacity, Animated, Image } from 'react-native';
 import { shihtOnts } from '../shihtOnts';
 import React, { useState } from 'react';
 import { mifoQwests } from '../ArceGishHumiAsteses/mifoQwests';
+import { LanternFlyEffect } from '../OforiCimpentoniesTIghymr/LanternFlyEffect';
 
 const { width: ercofshr, height: ytorvys } = Dimensions.get('window');
 
@@ -13,7 +14,7 @@ interface Props {
     goToResult: () => void;
 }
 
-export default function QuizScreen({ currentLevel = 0, userAnswers, setUserAnswers, goToResult, questions }: Props) {
+export default function GeniqizPagnseAnws({ currentLevel = 0, userAnswers, setUserAnswers, goToResult, questions }: Props) {
     const questionsArr = questions || mifoQwests[currentLevel];
     const qIdx = userAnswers.length;
     const q = questionsArr[qIdx];
@@ -47,6 +48,8 @@ export default function QuizScreen({ currentLevel = 0, userAnswers, setUserAnswe
             justifyContent: 'flex-start',
             alignItems: 'center',
         }}>
+            {/* Lanterns flying up */}
+            <LanternFlyEffect />
             {/* Bull image */}
             <View style={{ marginBottom: ytorvys * 0.04 }}>
                 {/* Тут має бути ваш компонент з биком */}

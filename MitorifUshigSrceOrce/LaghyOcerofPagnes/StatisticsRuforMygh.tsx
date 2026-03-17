@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { shihtOnts } from '../shihtOnts';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
 import React, { useState, useEffect, } from 'react';
 import {
     Share,
@@ -61,11 +61,22 @@ export default function StatisticsRuforMygh() {
     return (
         <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: 'transparent', alignItems: 'center', }}>
             <Image
-                source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/statbul.png')}
+                source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/forscrenshot.png')}
                 style={{
+                    position: 'absolute',
+                    top: -oruh * 0.1,
+                    alignSelf: 'center',
+                    height: oruh * 0.35,
                     width: forwids,
-                    marginTop: - oruh * 0.08,
-                    height: forwids,
+
+                }} resizeMode="stretch"
+            />
+            <Image
+                source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/lighter.png')}
+                style={{
+                    width: forwids * 0.61,
+                    marginTop:  oruh * 0.07,
+                    height: forwids * 0.61,
                     alignSelf: 'center',
                 }}
                 resizeMode="stretch"
@@ -88,7 +99,7 @@ export default function StatisticsRuforMygh() {
                     fontFamily: shihtOnts.foriLexenMed,
                     color: '#C6C7E9',
                 }}>
-                    My statistic
+                    My Lantern statistic
                 </Text>
                 <Text style={{
                     marginBottom: oruh * 0.012,
@@ -112,13 +123,13 @@ export default function StatisticsRuforMygh() {
                     color: '#C6C7E9',
                     fontFamily: shihtOnts.foriLexenLit,
                 }}>
-                    Mighty Rush passed: {mightyRushPassed ? 'Yes' : 'No'}
+                    Lantern Rush passed: {mightyRushPassed ? 'Yes' : 'No'}
                 </Text>
                 <CikrLogiColifBut
                     timiTixtLbl={'Share'}
                     onPress={() => {
                         Share.share({
-                            message: `My Mighty Force Rush stats:\nLevels passed: ${trueLevelsCount}\nMedals received: ${medalsReceived}\nMighty Rush passed: ${mightyRushPassed ? 'Yes' : 'No'}`,
+                            message: `My Lantern Mind Rush stats:\nLevels passed: ${trueLevelsCount}\nMedals received: ${medalsReceived}\nMighty Rush passed: ${mightyRushPassed ? 'Yes' : 'No'}`,
                         })
                     }}
                     adothStyliOfCont={{

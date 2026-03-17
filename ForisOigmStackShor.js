@@ -1,10 +1,10 @@
 import { NavigationContainer as NavContY } from '@react-navigation/native';
 import { GestureHandlerRootView as GhrViewX } from 'react-native-gesture-handler';
 import { SafeAreaProvider as SafeWrapQ } from 'react-native-safe-area-context';
-import Jq8Varlop from './MitorifUshigSrceOrce/RotecIghtiLimrPags/CofurLoadaingTutir';
-import ZibFlox from './MitorifUshigSrceOrce/RotecIghtiLimrPags/CoserShormOnbrigh';
+import Jq8Varlop from './MitorifUshigSrceOrce/LaghyOcerofPagnes/CofurLoadaingTutir';
+import ZibFlox from './MitorifUshigSrceOrce/LaghyOcerofPagnes/CoserShormOnbrigh';
 import { createNativeStackNavigator as StackGenQ } from '@react-navigation/native-stack';
-import PlonTixy from './MitorifUshigSrceOrce/RotecIghtiLimrPags/SritonContintWaroln';
+import PlonTixy from './MitorifUshigSrceOrce/LaghyOcerofPagnes/SritonContintWaroln';
 
 const StackObjR = StackGenQ();
 
@@ -20,7 +20,7 @@ const MainTreeZ = () => {
     return (
         <NavContY>
             <Nashu initialRouteName="CofurLoadaingTutir" screenOptions={{
-                contentStyle: { backgroundColor: '#1D1E2B' },
+                contentStyle: { backgroundColor: '#0E0A5E' },
                 animationEnabled: true,
             }}>
                 <Forcreq
@@ -44,7 +44,7 @@ const MainTreeZ = () => {
 
 const RootEntryX = () => {
     return (
-        <GhrViewX style={{ flex: 1, backgroundColor: '#1D1E2B' }}>
+        <GhrViewX style={{ flex: 1, backgroundColor: '#0E0A5E' }}>
             <SafeWrapQ>
                 <MainTreeZ />
             </SafeWrapQ>

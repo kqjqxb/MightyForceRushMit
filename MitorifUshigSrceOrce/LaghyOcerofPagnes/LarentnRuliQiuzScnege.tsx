@@ -1,8 +1,8 @@
 import { View, Text, Dimensions, Image } from 'react-native';
-import ResultScreen from './ResultScreen';
+import GihtySurelustTighu from './GihtySurelustTighu';
 import { shihtOnts } from '../shihtOnts';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
-import QuizScreen from './QuizScreen';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
+import GeniqizPagnseAnws from './GeniqizPagnseAnws';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 
@@ -35,7 +35,7 @@ interface Props {
     setTabZoq: (tab: any) => void;
 }
 
-export default function MightyRushQuizScreen({ setTabZoq }: Props) {
+export default function LarentnRuliQiuzScnege({ setTabZoq }: Props) {
     const [started, setStarted] = useState(false);
     const [answers, setAnswers] = useState<number[]>([]);
     const [showResult, setShowResult] = useState(false);
@@ -48,7 +48,7 @@ export default function MightyRushQuizScreen({ setTabZoq }: Props) {
     };
 
     const handleBack = async () => {
-        setTabZoq('Ritum Ighty Localize Of Apka');
+        setTabZoq('Lanrtn Suhri Tigiy Loc');
     };
 
     React.useEffect(() => {
@@ -66,12 +66,11 @@ export default function MightyRushQuizScreen({ setTabZoq }: Props) {
                 flex: 1,
                 alignItems: 'center',
             }}>
-                {/* Фон, ліхтарі, пелюстки, якщо треба, додайте тут */}
-                <Image source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/statbul.png')}
+                <Image source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/forscrenshot.png')}
                     style={{
-                        resizeMode: 'cover',
-                        marginTop: -rofeh * 0.1,
-                        height: gihiws * 0.7,
+                        resizeMode: 'stretch',
+                        marginTop: -rofeh * 0.19,
+                        height: rofeh * 0.4,
                         // marginBottom: -rofeh * 0.04,
                         width: gihiws,
                     }}
@@ -95,7 +94,7 @@ export default function MightyRushQuizScreen({ setTabZoq }: Props) {
                         fontSize: gihiws * 0.09,
                         textAlign: 'center',
                         color: '#fff',
-                    }}>Mighty Rush</Text>
+                    }}>Lantern Rush</Text>
                     <Text style={{
                         color: '#C6C7E9',
                         fontSize: gihiws * 0.048,
@@ -120,7 +119,7 @@ export default function MightyRushQuizScreen({ setTabZoq }: Props) {
     // --- QUIZ SCREEN ---
     if (started && !showResult) {
         return (
-            <QuizScreen
+            <GeniqizPagnseAnws
                 questions={QUESTIONS}
                 goToResult={() => setShowResult(true)}
                 userAnswers={answers}
@@ -141,17 +140,7 @@ export default function MightyRushQuizScreen({ setTabZoq }: Props) {
                 flex: 1,
                 paddingTop: rofeh * 0.09,
             }}>
-                <Image
-                    style={{
-                        marginBottom: -rofeh * 0.14,
-                        height: gihiws,
-                        width: gihiws,
-                        resizeMode: 'cover',
-                        marginTop: -rofeh * 0.09,
-                    }}
-                    source={require('../ArceGishHumiAsteses/ShorimTirceZobrazhnnya/statbul.png')}
-                />
-                <ResultScreen
+                <GihtySurelustTighu
                     backToLevels={handleBack}
                     onShare={handleShare}
                     notGreen={true}

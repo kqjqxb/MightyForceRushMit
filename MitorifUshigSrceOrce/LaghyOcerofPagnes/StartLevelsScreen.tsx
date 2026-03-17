@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions } from 'react-native';
-import CikrLogiColifBut from '../GohyShimEcrCompston/CikrLogiColifBut';
+import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
 const { width: shirin, height: wizota } = Dimensions.get('window');
 const LEVELS_COUNT = 10;
 const PASSED_COLORS = ['#34D73E', '#94F997', '#28BA20'];
