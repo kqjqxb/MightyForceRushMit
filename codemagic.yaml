@@ -5,17 +5,17 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       groups:
-        - migfdsodfio-sdfj-aoisjfdlkso  # <----
+        - lantrp-sdfjsd-wikmaouemls-ajsoqanzfufhne  # <----
       vars:
-        BUNDLE_ID: "com.aiso.maidftsilf.dsoqpefiozf" # <----
+        BUNDLE_ID: "com.ilsjfwpdsn.sdfjusi.sifjofkjfs" # <----
         XCODE_SCHEME: "MightyForceRushMit" # <----
-        APP_STORE_CONNECT_ISSUER_ID: "9748eec5-9c3f-494e-9f74-3533ca9a2da2" # <----
+        APP_STORE_CONNECT_ISSUER_ID: "8ef46620-db58-4825-a44e-16e32b1b8759" # <----
         cocoapods: default
-        APP_STORE_CONNECT_KEY_ID: "47TCCM4CZH" # <----
+        APP_STORE_CONNECT_KEY_ID: "J4U9ZCW6J2" # <----
         xcode: latest
         node: latest
         XCODE_WORKSPACE: "MightyForceRushMit.xcworkspace" # <----
-        APP_STORE_APP_ID: 6760680336 # <----
+        APP_STORE_APP_ID: 6760773682 # <----
     triggering:
       events:
         - push
@@ -52,7 +52,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - cristianricci65@icloud.com       # <----
+          - deanrowland31@icloud.com       # <----
         notify:
           success: true
           failure: false
