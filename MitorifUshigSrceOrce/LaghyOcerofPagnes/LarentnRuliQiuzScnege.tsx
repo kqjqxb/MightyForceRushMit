@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, Image } from 'react-native';
+import { View, Text, Dimensions, Image, Share } from 'react-native';
 import GihtySurelustTighu from './GihtySurelustTighu';
 import { shihtOnts } from '../shihtOnts';
 import CikrLogiColifBut from '../OforiCimpentoniesTIghymr/CikrLogiColifBut';
@@ -130,8 +130,14 @@ export default function LarentnRuliQiuzScnege({ setTabZoq }: Props) {
 
     // --- RESULT SCREEN ---
     if (showResult) {
-        const handleShare = () => {
-            // Тут логіка для шарінгу, наприклад через Share API
+        const handleShare = async () => {
+            try {
+                await Share.share({
+                    message: `I scored ${correctCount}/20 on Lantern Rush! Can you beat my score?`
+                });
+            } catch (error) {
+                console.error('Share failed:', error);
+            }
         };
         return (
             <View style={{
@@ -143,17 +149,17 @@ export default function LarentnRuliQiuzScnege({ setTabZoq }: Props) {
                 <GihtySurelustTighu
                     backToLevels={handleBack}
                     onShare={handleShare}
-                    notGreen={true}
                     questions={QUESTIONS}
                     userAnswers={answers}
                     customTexts={{
                         winSubtitle: 'You received a medal, see it in achievements!',
                         scoreLabel: 'Your Score:',
-                        shareButton: 'Share',
+                        shareButton: correctCount > 16 ? 'Share' :  'Back to levels',
                         loseSubtitle: 'Do you want to try again?',
                         backButton: 'Back home',
                         loseTitle: 'You lost',
                         winTitle: 'You win!',
+                        notGreen: true,
                     }}
                     restartLevel={handleRestart}
                 />

@@ -46,6 +46,32 @@ export default function ForshLevels() {
     const goToResult = () => setScreen('result');
 
     // --- Зберігання прогресу ---
+    const markLevelComplete = async () => {
+        const correctCount = userAnswers.reduce((acc, ansIdx, idx) => {
+            return acc + (ansIdx === mifoQwests[currentLevel][idx].correct ? 1 : 0);
+        }, 0);
+
+        if (correctCount >= 4) {
+            // Mark current level as passed
+            const updated = [...passedLevels];
+            updated[currentLevel] = true;
+            setPassedLevels(updated);
+            
+            // Persist to storage immediately
+            try {
+                await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            } catch { }
+
+            // Advance to next level if not the last level
+            if (currentLevel < LEVELS_COUNT - 1) {
+                setCurrentLevel(currentLevel + 1);
+            }
+
+            return true;
+        }
+        return false;
+    };
+
     useEffect(() => {
         if (screen === 'result') {
             const correctCount = userAnswers.reduce((acc, ansIdx, idx) => {
@@ -90,7 +116,14 @@ export default function ForshLevels() {
                 userAnswers={userAnswers}
                 currentLevel={currentLevel}
                 backToLevels={backToLevels}
-                setCurrentLevel={setCurrentLevel}
+                onContinueToNextLevel={async () => {
+                    const passed = await markLevelComplete();
+                    if (passed && currentLevel < LEVELS_COUNT - 1) {
+                        setScreen('levels');
+                    } else if (!passed) {
+                        restartLevel();
+                    }
+                }}
             />
         );
     }

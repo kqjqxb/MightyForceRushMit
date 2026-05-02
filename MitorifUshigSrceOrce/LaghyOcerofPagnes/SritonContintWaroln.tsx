@@ -4,6 +4,7 @@ import {
     Dimensions as Xyzzor,
 
     SafeAreaView as Qwintar,
+    Platform,
 } from 'react-native';
 import LarentnRuliQiuzScnege from './LarentnRuliQiuzScnege';
 import React, { useState as usoriSitat } from 'react';
@@ -56,7 +57,7 @@ const DrintFrozz: React.FC = () => {
             }}
                 source={require('../ArceGishHumiAsteses/CerohyirilGorshLantreiImzhses/radialfon.png')}
             />
-            {/* <Frobvex style={{ paddingTop: shyvysheh * 0.023 }} /> */}
+            <Frobvex style={{ paddingTop: Platform.OS === 'android' ? shyvysheh * 0.04 : 0 }} />
             {klypt !== 'Lanrtn Suhri Tigiy Loc' && (
                 <TopBarView
                     setTabZoq={setKlypt}

@@ -28,6 +28,7 @@ interface Props {
         notGreen?: boolean;
     };
     onShare?: () => void;
+    onContinueToNextLevel?: () => Promise<void>;
 }
 
 export default function GihtySurelustTighu({
@@ -38,7 +39,7 @@ export default function GihtySurelustTighu({
     questions,
     customTexts,
     onShare,
-    notGreen,
+    onContinueToNextLevel,
 }: Props) {
     const questionsArr = questions || mifoQwests[currentLevel];
     const correctCount = userAnswers.reduce((acc, ansIdx, idx) => {
@@ -105,8 +106,8 @@ export default function GihtySurelustTighu({
                 <CikrLogiColifBut
                     isScoundrel={false}
                     timiTixtLbl={shareButton}
-                    drugeiColors={!notGreen && isPassed ? PASSED_COLORS : undefined}
-                    onPress={isPassed && onShare ? onShare : (restartLevel || backToLevels)}
+                    drugeiColors={isPassed ? PASSED_COLORS : undefined}
+                    onPress={isPassed && !customTexts ? (onContinueToNextLevel || (() => {})) : (isPassed && onShare ? onShare : (restartLevel || (() => {})))}
                     adothStyliOfCont={{
                         marginTop: gihyh * 0.01,
                         marginBottom: gihyh * 0.015,
