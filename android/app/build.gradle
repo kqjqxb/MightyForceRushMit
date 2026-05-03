@@ -79,7 +79,7 @@ android {
 
     namespace "com.mightyforcerushmit"
     defaultConfig {
-        applicationId "com.lantern.word.rush"
+        applicationId "com.lantern.focus.rush"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -93,10 +93,10 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file('lanternwordrush.keystore')
-            storePassword 'lanternwordrush'
-            keyAlias 'lanternwordrush'
-            keyPassword 'lanternwordrush'
+            storeFile file('lanternfocusrush.keystore')
+            storePassword 'lanternfocusrush'
+            keyAlias 'lanternfocusrush'
+            keyPassword 'lanternfocusrush'
         }
     }
     buildTypes {
